@@ -1,9 +1,15 @@
 import React from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 import { useState } from 'react'
+import UseCallbackButtons from './UseCallbackButtons'
 
 const UseCallback = (props) => {
     const [count, setCount] = useState(0)
+
+    function inc(delta) {
+        setCount(count + delta)
+    }
+  
 
     return (
         <div className="UseCallback">
@@ -12,14 +18,10 @@ const UseCallback = (props) => {
                 subtitle="Retorna uma função memoizada!"
             />
 
-        <div className="center">
-            <span className="text">{count}</span>
-            <div>
-                <button className="btn">+6</button>
-                <button className="btn">+12</button>
-                <button className="btn">+18</button>
+            <div className="center">
+                <span className="text">{count}</span>
+                <UseCallbackButtons inc={inc} />
             </div>
-        </div>
         </div>
     )
 }
